@@ -1,0 +1,50 @@
+{% extends 'basic.html' %}
+{% block title%} Registration form{% endblock %}
+{% block body %}
+<div class="content-section">
+    <form action="product"  method="post">{% csrf_token %}
+        
+        <div class="container">
+            <label for="User Name"><b>User Name</b></label>
+            <input type="text" placeholder="Enter User Name" name="user_name" required>
+            <br>
+            <br>
+    
+            <!-- <label for="Last Name"><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name" name="Last Name" required>
+            <br>
+            <br>
+            
+            <label for="Email"><b>Email Id</b></label>
+            <input type="email" placeholder="Enter Email" name="Email" required>
+            <br>
+            <br> -->
+    
+            <label for="Mobile Number"><b>Mobile Number</b></label>
+            <input type="tel" placeholder="Enter Mobile Number" name="mobile_No" required>
+            <br>
+            <br>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+    
+            <br>
+            <br>
+            <label for="address"><b>Address</b></label>
+            <input type="address" placeholder="Enter address" name="address" required>
+    
+            <!-- <br>
+            <br>
+            <label for="password"><b> Re Enter Password</b></label>
+            <input type="password" placeholder="Re Enter Password" name="passsword" required> -->
+            <br>
+            <br>
+            <button type="submit">submit</button>
+            
+          </div>
+    
+        
+        </form>
+
+
+{% endblock %} 
+<!--<img src="http://127.0.0.1:8000/media/ecomapp/images/1173850_AllCat_260._SY260_CB463219347_.jpg">-->
