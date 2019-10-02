@@ -26,18 +26,19 @@
 
 {% for catp in catprods %}
 <h3>{{catp.category_name}}</h3>
-    <!-- <div>
-      {% for items in prod %}
-        <div class="card" style="float:left">{% csrf_token %}
-          <img src="http://127.0.0.1:8000/media/{{items.image}}" alt="" style="width:40%" height="60">
-        <div class="container">
-          <h4><b>{{items.product_name}}</b></h4> 
-          <p>{{items.price}}</p> 
-        </div>
-        </div><br> -->
+{% endfor %}
+    
+{% for items in prod %}
+    <div class="card" style="float:left">{% csrf_token %}
+      <img src="http://127.0.0.1:8000/media/{{items.image}}" alt="" style="width:40%" height="60">
+    <div class="container">
+      <h4><b>{{items.product_name}}</b></h4> 
+      <p>{{items.price}}</p> 
+    </div>
+    <br>
         
       {% endfor %}
-{% endfor %}
+
 
 
 {% endblock %}
