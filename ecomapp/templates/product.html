@@ -1,44 +1,17 @@
-{% extends 'basic.html' %}
-{% block title%}Products{% endblock %}
-
-{% block css %}
-.card {
-    <!-- box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); -->
-    transition: 0.3s;
-    width: 20%;
-    height: 30%
-    float:left
-
-  }
-  
-  .card:hover {
-    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
-  }
-  
-  .container {
-    padding: 1px 222px;
-  }
-
-{% endblock %}
-
-{% block body %}
+{% extends 'basic.html' %} {% block title%}Products{% endblock %} {% block css %} .card {
+<!-- box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); -->
+transition: 0.3s; width: 20%; height: 30% float:left } .card:hover { box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2); } .container
+{ padding: 1px 222px; } {% endblock %} {% block body %}
 <h2>Products</h2>
 
-{% for catp in catprods %}
-<h3>{{catp.category_name}}</h3>
-{% endfor %}
-    
-{% for items in prod %}
-    <div class="card" style="float:left">{% csrf_token %}
-      <img src="http://127.0.0.1:8000/media/{{items.image}}" alt="" style="width:40%" height="60">
-    <div class="container">
-      <h4><b>{{items.product_name}}</b></h4> 
-      <p>{{items.price}}</p> 
-    </div>
-    <br>
-        
-      {% endfor %}
-
-
-
-{% endblock %}
+{% for prodcat in prods %}
+<h3>{{forloop.counter0}}</h3> {% for prod in prodcat %}
+<div class="card" style="float:left">{% csrf_token %}
+  <img src="http://127.0.0.1:8000/media/{{prod.image}}" alt="">
+  <div class="container">
+    <h4>
+      <b>{{prod.product_name}}</b>
+    </h4>
+    <p>{{prod.price}}</p>
+  </div>
+  <br> {% endfor %}{% endfor %} {% endblock %}

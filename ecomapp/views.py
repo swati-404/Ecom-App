@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import HttpResponse
 from ecomapp.models import User
+from django.db import connection
 #from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Product, Category
@@ -40,15 +41,15 @@ def register(request):
     
 
 def product(request):
-    prod = Product.objects.values('category_id', 'id')
     allProds =[]
-    
-    catprods = Category.objects.values('id')
+    catprods = Category.objects.values('id', 'category_name')
+    # print(catprods)
     for cat in catprods:
-        prod = Product.objects.filter(category_id=cat["id"])
+        prod = Product.objects.select_related().filter(category_id=cat["id"])
+        # print(prod)
         allProds.append(prod)
-    print(allProds)
+    # print(allProds)
         
-    param = {'prod':prod, 'catprods':catprods}
+    param = {'prods':allProds, 'catprods':list(catprods)}
     return render(request, "product.html", param)
 
