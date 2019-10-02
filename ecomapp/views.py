@@ -41,17 +41,13 @@ def register(request):
 
 def product(request):
     prod = Product.objects.values('category_id', 'id')
-    print(prod)
     allProds =[]
     
-    catprods = Category.objects.values('category_name', 'id')
-    print(catprods)
-    cats = {item['category_name'] for item in catprods}
-    for cat in cats:
-        prod = Category.objects.filter(category_name=cat)
-        if Category.category_id == Product.category_id:
-            allProds.append(prod)
-            print(allProds)
+    catprods = Category.objects.values('id')
+    for cat in catprods:
+        prod = Product.objects.filter(category_id=cat["id"])
+        allProds.append(prod)
+    print(allProds)
         
     param = {'prod':prod, 'catprods':catprods}
     return render(request, "product.html", param)
